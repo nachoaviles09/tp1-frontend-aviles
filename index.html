@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP1 Frontend - Ficha 4: Gimnasio</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Ficha 4: Gimnasio</h1>
+    <p>Gestión de Clases Grupales y Entrenadores — TP1 Frontend</p>
+  </header>
+
+  <main class="contenedor">
+    <!-- SECCIÓN 1: LISTADO Y FILTROS DE CLASES GRUPALES -->
+    <section class="card">
+      <h2>Clases Grupales</h2>
+
+      <div class="filtros">
+        <div class="campo">
+          <label for="buscador-clase">Buscar por nombre</label>
+          <input type="text" id="buscador-clase" placeholder="Ej: CrossFit, Spinning...">
+        </div>
+
+        <div class="campo">
+          <label for="filtro-dia">Filtrar por día</label>
+          <select id="filtro-dia">
+            <option value="">Todos los días</option>
+            <option value="lunes">lunes</option>
+            <option value="martes">martes</option>
+            <option value="miercoles">miercoles</option>
+            <option value="jueves">jueves</option>
+            <option value="viernes">viernes</option>
+            <option value="sabado">sabado</option>
+          </select>
+        </div>
+
+        <div class="campo campo-check">
+          <label>
+            <input type="checkbox" id="filtro-cupo">
+            Solo con cupo disponible
+          </label>
+        </div>
+      </div>
+
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Día</th>
+              <th>Entrenador</th>
+              <th>Inscriptos / Cupo Máximo</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-clases"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: FORMULARIO DE ALTA DE CLASE GRUPAL -->
+    <section class="card">
+      <h2>Alta de Clase Grupal</h2>
+
+      <div id="mensaje-form" class="alerta oculto" role="alert"></div>
+
+      <form id="form-clase" class="formulario" novalidate>
+        <div class="grid-form">
+          <div class="campo">
+            <label for="nombre-clase">Nombre de la clase</label>
+            <input type="text" id="nombre-clase" name="nombre" placeholder="Ej: Pilates Mat">
+          </div>
+
+          <div class="campo">
+            <label for="dia-clase">Día (lunes a sabado, sin tilde)</label>
+            <select id="dia-clase" name="dia">
+              <option value="lunes">lunes</option>
+              <option value="martes">martes</option>
+              <option value="miercoles">miercoles</option>
+              <option value="jueves">jueves</option>
+              <option value="viernes">viernes</option>
+              <option value="sabado">sabado</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="cupo-maximo">Cupo Máximo (1 a 50)</label>
+            <input type="number" id="cupo-maximo" name="cupoMaximo" min="1" max="50" value="20">
+          </div>
+
+          <div class="campo">
+            <label for="inscriptos-clase">Inscriptos (0 a cupo máximo)</label>
+            <input type="number" id="inscriptos-clase" name="inscriptos" min="0" max="50" value="0">
+          </div>
+
+          <div class="campo">
+            <label for="entrenador-clase">Entrenador asignado</label>
+            <select id="entrenador-clase" name="entrenador_id"></select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primario">Agregar Clase Grupal</button>
+      </form>
+    </section>
+
+    <!-- SECCIÓN 3: LISTADO Y FILTRO DE ENTRENADORES -->
+    <section class="card">
+      <div class="cabecera-seccion">
+        <h2>Entrenadores</h2>
+        <div class="campo filtro-inline">
+          <label for="filtro-especialidad">Filtrar por especialidad</label>
+          <select id="filtro-especialidad">
+            <option value="">Todas las especialidades</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre y Apellido</th>
+              <th>Especialidad</th>
+              <th>Matrícula</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-entrenadores"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/datos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
